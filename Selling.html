@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings</title>
+    <link rel="stylesheet" href="Selling.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Selling</div>
+    <nav>
+        <ul>
+            <li><a href="RealHome.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Agents.html">Agents Profiles</a></li>
+            <li><a href="Buy.html">Buy</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="LogIn.html">Log In</a></li>
+            <li><a href="SignUp.html">Sign Up</a></li>
+            <li><a href="Wish&fave.html">Wishlist&Favourites</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Back Navigation Section -->
+<div class="back-navigation">
+    <button onclick="goBack()" class="back-button">Go Back</button>
+</div>
+
+<h1>Property Listings</h1>
+<button id="add-property-btn">Add Property</button>
+
+<div class="property-list" id="propertyList"></div>
+
+<!-- Modal for Adding/Editing Property -->
+<div id="propertyModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Add Property</h2>
+        <form id="property-form">
+            <input type="hidden" id="property-index">
+            <label for="name">Property Name:</label>
+            <input type="text" id="name" required>
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" required>
+            <label for="description">Description:</label>
+            <textarea id="description" required></textarea>
+            <label for="min-price">Min Price:</label>
+            <input type="number" id="min-price" required>
+            <label for="max-price">Max Price:</label>
+            <input type="number" id="max-price" required>
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="number" id="bedrooms" required>
+            <button type="submit" id="submit-btn">Add Property</button>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    function goBack() {
+    window.history.back();
+}
+
+let properties = JSON.parse(localStorage.getItem('properties')) || [];
+const propertyList = document.getElementById("propertyList");
+const modal = document.getElementById("propertyModal");
+const closeModal = document.querySelector(".close");
+const propertyForm = document.getElementById("property-form");
+
+document.getElementById("add-property-btn").onclick = () => {
+    clearForm();
+    modal.style.display = "block";
+};
+
+closeModal.onclick = () => {
+    modal.style.display = "none";
+};
+
+window.onclick = (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+propertyForm.onsubmit = (event) => {
+    event.preventDefault();
+    const propertyIndex = document.getElementById("property-index").value;
+
+    const newProperty = {
+        name: document.getElementById("name").value,
+        image: document.getElementById("image").value,
+        description: document.getElementById("description").value,
+        min_price: parseInt(document.getElementById("min-price").value),
+        max_price: parseInt(document.getElementById("max-price").value),
+        bedrooms: parseInt(document.getElementById("bedrooms").value)
+    };
+
+    if (propertyIndex) {
+        properties[propertyIndex] = newProperty; // Update existing property
+    } else {
+        properties.push(newProperty); // Add new property
+    }
+
+    localStorage.setItem('properties', JSON.stringify(properties));
+    modal.style.display = "none";
+    displayProperties();
+};
+
+function displayProperties() {
+    propertyList.innerHTML = "";
+    properties.forEach((property, index) => {
+        const propertyItem = document.createElement("div");
+        propertyItem.className = "property-item";
+
+        const img = document.createElement("img");
+        img.src = property.image;
+        img.alt = property.name;
+        propertyItem.appendChild(img);
+
+        const title = document.createElement("div");
+        title.className = "property-title";
+        title.innerText = property.name;
+        propertyItem.appendChild(title);
+
+        const description = document.createElement("div");
+        description.innerText = property.description;
+        propertyItem.appendChild(description);
+
+        const price = document.createElement("div");
+        price.innerText = `Price: R${property.min_price} - R${property.max_price}`;
+        propertyItem.appendChild(price);
+
+        const bedrooms = document.createElement("div");
+        bedrooms.innerText = `Bedrooms: ${property.bedrooms}`;
+        propertyItem.appendChild(bedrooms);
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.className = "button-container";
+
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.onclick = () => editProperty(index);
+        buttonContainer.appendChild(editBtn);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.onclick = () => deleteProperty(index);
+        buttonContainer.appendChild(deleteBtn);
+
+        propertyItem.appendChild(buttonContainer);
+        propertyList.appendChild(propertyItem);
+    });
+}
+
+function editProperty(index) {
+    const property = properties[index];
+    document.getElementById("property-index").value = index;
+    document.getElementById("name").value = property.name;
+    document.getElementById("image").value = property.image;
+    document.getElementById("description").value = property.description;
+    document.getElementById("min-price").value = property.min_price;
+    document.getElementById("max-price").value = property.max_price;
+    document.getElementById("bedrooms").value = property.bedrooms;
+
+    document.getElementById("modal-title").innerText = "Edit Property";
+    modal.style.display = "block";
+}
+
+function deleteProperty(index) {
+    properties.splice(index, 1);
+    localStorage.setItem('properties', JSON.stringify(properties));
+    displayProperties();
+}
+
+function clearForm() {
+    document.getElementById("property-index").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("image").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("min-price").value = "";
+    document.getElementById("max-price").value = "";
+    document.getElementById("bedrooms").value = "";
+    document.getElementById("modal-title").innerText = "Add Property";
+}
+
+// Display properties on page load
+window.onload = displayProperties;
+
+</script>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 RealHome. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="RealHome.html">Home</a></li>
+            <a href="About.html">About</a></li>
+            <a href="Agents.html">Agents Profiles</a></li>
+            <a href="Buy.html">Buy</a></li>
+            <a href="Contact.html">Contact</a></li>
+            <a href="LogIn.html">Log In</a></li>
+            <a href="SignUp.html">Sign Up</a></li>
+            <a href="Wish&fave.html">Wishlist&Favourites</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings</title>
+    <link rel="stylesheet" href="RealHome.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">Property Listings</div>
+        <nav>
+            <ul>
+                <li><a href="Agents.html">Agents Profiles</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Buy.html">Buy & Rent</a></li>
+                <li><a href="Selling.html">Sell</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="LogIn.html">Log In</a></li>
+                <li><a href="SignUp.html">Sign Up</a></li>
+                <li><a href="Wish&fave.html">Wishlist&Favourites</a></li>
+            </ul>
+        </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search properties...">
+        <button id="search-btn">Search</button>
+    </div>
+</header>
+
+<h1> Kick back and relax, you're Home now </h1>
+
+<div class="container">
+        <div class="brick"><center>
+            <img src="Homepage/Sign up.avif" alt="Image 1">
+            <p>Sign up to RealHome to make it easier for yoourself to purchase, rent and get in contact with agents, signing up will also grant the user a discount on their first property purchase.</p>
+        </div>
+        <div class="brick">
+            <img src="Homepage/Agents.jpg" alt="Image 2">
+            <p>Contact agents directly to inquire about properties as well as property vaue to make the best decisions for you.</p>
+        </div>
+        <div class="brick">
+            <img src="Homepage/Property.jpg" alt="Image 3">
+            <p>Find your dream house and plan for it based on your budget. Take the first step in living the life you have always dreamed of!</p>
+        </div></center>
+    </div><br>
+
+<h1><i> Get to know Realhome and feel at ease with Gauteng's greatest Real Estate Platform </i></h1>
+
+<p> RealHome is the go to when it comes to real estate in Gauteng! </p>
+
+<p> Here at RealHome we serve to foster strong relationships between our agents as well as our customers to make things as efficient as possible. So kick back and relax, you're Home now</p>
+
+<center><a href="About.html" class="custom-button">About RealHome</a></center>
+
+<div class="text-container">
+<h1> Our Esteemed Agents </h1>
+
+<div class="line"> The Agents at RealHome are professionals in every sense of the word.</div>
+<div class="line"> They will help you find your Dream Home and furthermore help you make it yours.</div></div>
+
+<center><a href="Agents.html" class="custom-button2">Our Wonderful Agents</a></center>
+
+<div class="container">
+
+<h1> Buying and Selling at it's most convenient</h1>
+
+<div class="text">
+    <p> Buying: With help from our RealHome Agents buying property is just about as easy as it could possibly be.<br>
+    This simplicity is integral for putting you at ease and helping you find the house of your dreams and turn it into a home. </p>
+</div>
+    <img src="Homepage/Buying.webp" alt="Image 1" class="image" height="200">
+
+<div class="text">
+    <p> Selling: Selling property is made incredibly easy thanks to the systems that RealHome has put in place.<br>
+        Selling your property on RealHome will grant you 80% of the sales making it extremely beneficial for you.<br>
+    You are given greater flexibility and the sales will always be on your terms! </p>
+</div>
+     <img src="Homepage/Selling.avif" alt="Image 2" class="image" height="200">
+</div></div><br>
+
+<br><a href="Buy.html" class="custom-button3">Buying</a>
+<center><button class="button right-button"><a href="Selling.html" class="custom-button3">Selling</a></div></button></center>
+
+
+
+<br><h1>Average Property Asking and Sale Prices in Gauteng (2018-2024)</h1><br>
+<br><canvas id="propertyChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('propertyChart').getContext('2d');
+        const propertyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [
+                    {
+                        label: 'Average Asking Price (ZAR)',
+                        data: [1500000, 1600000, 1550000, 1700000, 1800000, 1900000, 2000000],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Average Sale Price (ZAR)',
+                        data: [1450000, 1550000, 1500000, 1650000, 1750000, 1850000, 1950000],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Price (ZAR)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    </script>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 RealHome. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Agents.html">Agents Profiles</a></li>
+            <a href="About.html">About</a></li>
+            <a href="Buy.html">Buy & Rent</a></li>
+            <a href="Selling.html">Sell</a></li>
+            <a href="Contact.html">Contact</a></li>
+            <a href="LogIn.html">Log In</a></li>
+            <a href="SignUp.html">Sign Up</a></li>
+            <a href="Wish&fave.html">Wishlist&Favourites</a>
+        </div>
+    </div>
+</footer>
+

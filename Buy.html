@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings</title>
+    <link rel="stylesheet" href="Buy.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">Property Listings</div>
+    <nav>
+        <ul>
+            <li><a href="RealHome.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Agents.html">Agents Profiles</a></li>
+            <li><a href="Selling.html">Sell</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="LogIn.html">Log In</a></li>
+            <li><a href="SignUp.html">Sign Up</a></li>
+            <li><a href="Wish&fave.html">Wishlist&Favourites</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Back Navigation Section -->
+<div class="back-navigation">
+    <button onclick="goBack()" class="back-button">Go Back</button>
+</div>
+
+<div class="search-container">
+    <h1>Property Search</h1>
+    <form id="search-form">
+        <div class="form-group">
+            <label for="price-range">Price Range:</label>
+            <div class="price-inputs">
+                <input type="number" id="min-price" placeholder="Min Price" step="10000">
+                <input type="number" id="max-price" placeholder="Max Price" step="10000">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="bedrooms">Bedrooms:</label>
+            <select id="bedrooms">
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </div>
+
+        <div class="form-group amenities">
+            <label>Amenities:</label>
+            <div class="amenities-grid">
+                <div>
+                    <input type="checkbox" id="pool" name="amenities" value="pool">
+                    <label for="pool">Pool</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="garage" name="amenities" value="garage">
+                    <label for="garage">Garage</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="garden" name="amenities" value="garden">
+                    <label for="garden">Garden</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="wifi" name="amenities" value="Wi-Fi">
+                    <label for="wifi">Wi-Fi</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pets" name="amenities" value="pets">
+                    <label for="pets">Pets</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="parking" name="amenities" value="parking">
+                    <label for="parking">Parking</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+<h1>Property Listings</h1>
+<div class="property-list" id="propertyList"></div>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+const properties = [
+    {
+        name: "Modern Family Home",
+        image: "Buy/Family.png",
+        link: "Properties/Family.html",
+        min_price: 2000000,
+        max_price: 3000000,
+        bedrooms: 4,
+        amenities: ["pool", "garage"]
+    },
+    {
+        name: "Luxury Condo",
+        image: "Buy/condo.png",
+        link: "Properties/Condo.html",
+        min_price: 3000000,
+        max_price: 5000000,
+        bedrooms: 2,
+        amenities: ["Wi-Fi", "garden"]
+    },
+    {
+        name: "Architectural Home",
+        image: "Buy/archi.png",
+        link: "Properties/Architectural.html",
+        min_price: 5000000,
+        max_price: 10000000,
+        bedrooms: 5,
+        amenities: ["pool", "garden"]
+    },
+    {
+        name: "Luxury Mansion",
+        image: "Buy/mansion.png",
+        link: "Properties/Mansion.html",
+        min_price: 37000000,
+        max_price: 38000000,
+        bedrooms: 4,
+        amenities: ["pool", "garden", "pets", "parking", "garage"]
+    },
+    {
+        name: "Luxury Apartment",
+        image: "Buy/Apartment.png",
+        link: "Properties/Apartment.html",
+        min_price: 2000000,
+        max_price: 3000000,
+        bedrooms: 1,
+        amenities: ["Wi-Fi", "pool", "garden", "pets", "parking", "garage"]
+    },
+    {
+        name: "Villa",
+        image: "Buy/outside.png",
+        link: "Properties/Villa.html",
+        min_price: 6700000,
+        max_price: 7000000,
+        bedrooms: 4,
+        amenities: ["pool", "garden", "pets", "parking", "garage"]
+    },
+    {
+        name: "Blair Estate Mansion",
+        image: "Buy/mansion1.png",
+        link: "Properties/Blair.html",
+        min_price: 28000000,
+        max_price: 30000000,
+        bedrooms: 4,
+        amenities: ["pool", "garden", "pets", "parking"]
+    },
+    {
+        name: "Woodhill Golf Estate",
+        image: "Buy/outside1.png",
+        link: "Properties/estate.html",
+        min_price: 12000000,
+        max_price: 13000000,
+        bedrooms: 4,
+        amenities: ["pool", "garden", "pets", "garage"]
+    },
+];
+
+const propertyList = document.getElementById("propertyList");
+
+document.getElementById("search-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const minPrice = parseInt(document.getElementById("min-price").value) || 0;
+    const maxPrice = parseInt(document.getElementById("max-price").value) || Infinity;
+    const bedrooms = parseInt(document.getElementById("bedrooms").value) || 0;
+
+    const amenities = Array.from(document.querySelectorAll('input[name="amenities"]:checked')).map(checkbox => checkbox.value);
+
+    // Filter properties based on the search criteria
+    const filteredProperties = properties.filter(property => {
+        return property.min_price >= minPrice &&
+               property.max_price <= maxPrice &&
+               property.bedrooms >= bedrooms &&
+               (amenities.length === 0 || amenities.every(amenity => property.amenities.includes(amenity)));
+    });
+
+    // Clear previous results
+    propertyList.innerHTML = "";
+
+    // Display the filtered properties
+    filteredProperties.forEach(property => {
+        const propertyItem = document.createElement("div");
+        propertyItem.className = "property-item";
+
+        const img = document.createElement("img");
+        img.src = property.image;
+        propertyItem.appendChild(img);
+
+        const title = document.createElement("div");
+        title.className = "property-title";
+        title.innerText = property.name;
+        propertyItem.appendChild(title);
+
+        propertyItem.onclick = () => {
+            window.location.href = property.link;
+        };
+        propertyList.appendChild(propertyItem);
+    });
+});
+
+// Initial display of all properties
+properties.forEach(property => {
+    const propertyItem = document.createElement("div");
+    propertyItem.className = "property-item";
+
+    const img = document.createElement("img");
+    img.src = property.image;
+    propertyItem.appendChild(img);
+
+    const title = document.createElement("div");
+    title.className = "property-title";
+    title.innerText = property.name;
+    propertyItem.appendChild(title);
+
+    propertyItem.onclick = () => {
+        window.location.href = property.link;
+    };
+    propertyList.appendChild(propertyItem);
+});
+</script>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 RealHome. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Agents.html">Agents Profiles</a>
+            <a href="About.html">About</a>
+            <a href="RealHome.html">Home</a>
+            <a href="Selling.html">Sell</a>
+            <a href="Contact.html">Contact</a>
+            <a href="LogIn.html">Log In</a></li>
+            <a href="SignUp.html">Sign Up</a></li>
+            <a href="Wish&fave.html">Wishlist&Favourites</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

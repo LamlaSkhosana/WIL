@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f3d5ec;
+}
+
+header {
+    background: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 20px; /* Space between bricks */
+}
+
+.brick {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 150px; /* Fixed width for bricks */
+    text-align: center; /* Center text and images */
+}
+
+.brick img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.custom-button {
+    background-color: #89CFF0; /* Green background */
+    color: white; /* White text */
+    padding: 15px 25px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    cursor: pointer; /* Pointer cursor */
+}
+
+        .custom-button:hover {
+            background-color: #00A36C; /* Darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+
+        .custom-button:active {
+            transform: scale(0.95); /* Slightly shrink when clicked */
+        }
+
+.text-container {
+    text-align: left; /* Align text to the left */
+    max-width: 600px; /* Optional: Set max width */
+}
+
+.line {
+    margin-bottom: 10px; /* Space between lines */
+}
+
+.custom-button2 {
+    background-color: #9F2B68; /* Green background */
+    color: white; /* White text */
+    padding: 15px 25px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    cursor: pointer; /* Pointer cursor */
+}
+
+        .custom-button2:hover {
+            background-color:   #7F00FF; /* Darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+
+        .custom-button2:active {
+            transform: scale(0.95); /* Slightly shrink when clicked */
+        }
+
+  .container2 {
+            display: flex; /* Use flexbox for layout */
+            align-items: flex-start; /* Align items at the start */
+            margin-bottom: 20px; /* Space between each row */
+        }
+
+        .text {
+            text-align: left; /* Align text to the left */
+            margin-left: 10px; /* Space between image and text */
+            max-width: 600px; /* Optional: Set max width for text */
+        }
+
+        .image {
+            width: 100px; /* Set image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+.custom-button3 {
+    background-color: #50C878; /* Green background */
+    color: white; /* White text */
+    padding: 15px 25px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    cursor: pointer; /* Pointer cursor */
+}
+
+        .custom-button3:hover {
+            background-color:   #228B22; /* Darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+
+        .custom-button3:active {
+            transform: scale(0.95); /* Slightly shrink when clicked */
+        }
+
+        .right-button {
+            background-color: transparent; /* Red background */
+            color: white; /* White text */
+        }
+
+
+canvas {
+    border: 2px solid #333; /* Border around the canvas */
+    padding: 10px; /* Optional padding inside the border */
+    background-color: #F5F5DC; /* Optional background color */
+}
+
+@media (max-width: 600px) {
+    body {
+        background-color: lightblue; /* Change background for smaller screens */
+    }
+}
+
+ footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer-links {
+            margin: 10px 0;
+        }
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+        }

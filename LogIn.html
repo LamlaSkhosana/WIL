@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+  <link rel="stylesheet" href="RealHome.css">
+
+  <style>
+
+.back-navigation {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+     form{
+  border: 1px;
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 10px;
+  background-size: 40px;
+  color: white;
+  width: 300px;
+  height: 280px;
+  margin: 280px;
+  padding: 50px;
+
+@media (max-width: 600px) {
+    body {
+        background-color: lightblue; 
+    }
+}
+
+footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+}
+ </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">Property Listings</div>
+        <nav>
+            <ul>
+                <li><a href="RealHome.html">Home</a></li>
+                <li><a href="Agents.html">Agent Profiles</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Buy.html">Buy</a></li>
+                <li><a href="Selling.html">Sell</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="SignUp.html">Sign Up</a></li>
+                <li><a href="Wish&fave.html">Wishlist&Favourites</a></li>
+            </ul>
+        </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search properties...">
+        <button id="search-btn">Search</button>
+    </div>
+</header>
+ 
+<div class="back-navigation">
+    <button onclick="goBack()" class="back-button">Go Back</button>
+</div>
+
+    <form action="login.php" method="POST">
+        <center><h1>Login here!</h1></center><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+
+<script>
+
+function goBack() {
+    window.history.back();
+}
+
+</script>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 RealHome. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="RealHome.html">Home</a></li>
+            <a href="Agents.html">Agent Profiles</a></li>
+            <a href="About.html">About</a></li>
+            <a href="Buy.html">Buy</a></li>
+            <a href="Selling.html">Sell</a></li>
+            <a href="Contact.html">Contact</a></li>
+            <a href="SignUp.html">Sign Up</a></li>
+            <a href="Wish&fave.html">Wishlist&Favourites</a>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

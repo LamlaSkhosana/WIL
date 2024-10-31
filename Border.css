@@ -1,0 +1,30 @@
+form{
+  border: 1px;
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 10px;
+  background-size: 40px;
+  color: white;
+  width: 300px;
+  height: 280px;
+  margin: 280px;
+  padding: 50px;
+}
+
+body{
+  background-image:url("blue.jpg") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+button {
+  border: 25px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: "Log In";
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
